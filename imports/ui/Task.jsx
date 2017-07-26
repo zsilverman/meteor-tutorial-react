@@ -45,7 +45,7 @@ export default class Task extends Component {
         ) : ''}
 
         <span className="text">
-          <strong>{this.props.task.username}</strong>: {this.props.task.text}
+          <strong>{this.props.task.username}</strong> {this.props.task.text}
         </span>
       </li>
     );

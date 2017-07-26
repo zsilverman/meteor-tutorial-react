@@ -2,6 +2,9 @@ import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 import { Meteor } from 'meteor/meteor';
 import { createContainer } from 'meteor/react-meteor-data';
+const emoji = require ('node-emoji');
+import { Picker } from 'emoji-mart';
+//import {emoji} from 'node-emoji';
 
 import { Tasks } from '../api/tasks.js';
 
@@ -23,8 +26,12 @@ class App extends Component {
 
     // Find the text field via the React ref
     const text = ReactDOM.findDOMNode(this.refs.textInput).value.trim();
+    //text is a string
+    //text = emoji.emojify(text+'');
+    //console.log('coffee: ' + Emoji.which(Emoji.get('coffee')));
+    //const emoji_text = emoji.which(emoji.get(text));
 
-    Meteor.call('tasks.insert', text);
+    Meteor.call('tasks.insert', emoji.emojify(text+''));
 
     // Clear form
     ReactDOM.findDOMNode(this.refs.textInput).value = '';
